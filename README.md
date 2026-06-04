@@ -78,6 +78,16 @@ npm install
 npm start
 ```
 
+`npm start` is StackBlitz-safe. It starts the Angular CLI dev server when the runtime supports Angular 22, and serves the committed preview build when the WebContainer Node version is older than Angular 22 requires.
+
+Use this command when you specifically want the real Angular CLI dev server:
+
+```bash
+npm run dev
+```
+
+Angular 22 CLI requires Node `22.22.3+`, `24.15.0+`, or `26.0.0+`.
+
 ## StackBlitz
 
 ```text

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
+    "start": "node scripts/start.mjs",
+    "dev": "ng serve --host 0.0.0.0",
+    "serve:static": "node scripts/static-server.mjs",
     "build": "ng build --configuration development --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
