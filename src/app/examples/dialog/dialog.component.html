@@ -1,0 +1,40 @@
+<section class="skin-section">
+  <div class="section-heading">
+    <p class="eyebrow">Dialog support</p>
+    <h2>Using inside dialog</h2>
+    <p class="example-copy">Clipping-safe dropdown with tagToBody inside an overflow container.</p>
+    <a class="stackblitz-row-link" href="https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22?startScript=start&initialpath=%2Fdialog" target="_blank" rel="noopener">Open this route in StackBlitz</a>
+  </div>
+
+  <article class="example-row overflow-example-row">
+    <div class="demo-cell">
+      <div class="overflow-dialog-frame">
+        <div class="demo-dialog-surface">
+          <div class="dialog-copy">
+            <strong>Simulated mat-mdc-dialog-surface</strong>
+            <span>overflow hidden, stacking context, and a dropdown near the lower edge.</span>
+          </div>
+          <angular-multiselect
+            [data]="countries"
+            [(ngModel)]="dialogSelected"
+            [settings]="dialogSettings"
+            (onSelect)="record('select', $event)"
+            (onDeSelect)="record('deselect', $event)"
+            (onSelectAll)="record('selectAll', $event)"
+            (onDeSelectAll)="record('deselectAll', $event)"
+          ></angular-multiselect>
+          <p class="settings-preview">skin: {{ dialogSettings.skin }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-cell">
+      <app-example-source [slug]="example.slug"></app-example-source>
+    </div>
+  </article>
+</section>
+
+<section class="activity">
+  <h2>Event log</h2>
+  <p *ngFor="let event of events">{{ event }}</p>
+</section>

@@ -1,0 +1,34 @@
+<section class="skin-section">
+  <div class="section-heading">
+    <p class="eyebrow">State</p>
+    <h2>Disabled state</h2>
+    <p class="example-copy">Disabled dropdown with existing selected value.</p>
+    <a class="stackblitz-row-link" href="https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22?startScript=start&initialpath=%2Fdisabled" target="_blank" rel="noopener">Open this route in StackBlitz</a>
+  </div>
+
+  <article class="example-row">
+    <div class="demo-cell">
+        <div class="dropdown-stack">
+          <angular-multiselect
+            [data]="countries"
+            [(ngModel)]="disabledSelected"
+            [settings]="disabledSettings"
+            (onSelect)="record('select', $event)"
+            (onDeSelect)="record('deselect', $event)"
+            (onSelectAll)="record('selectAll', $event)"
+            (onDeSelectAll)="record('deselectAll', $event)"
+          ></angular-multiselect>
+          <p class="settings-preview">skin: {{ disabledSettings.skin }}</p>
+        </div>
+    </div>
+
+    <div class="code-cell">
+      <app-example-source [slug]="example.slug"></app-example-source>
+    </div>
+  </article>
+</section>
+
+<section class="activity">
+  <h2>Event log</h2>
+  <p *ngFor="let event of events">{{ event }}</p>
+</section>

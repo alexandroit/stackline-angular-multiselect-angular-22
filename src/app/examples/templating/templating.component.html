@@ -1,0 +1,48 @@
+<section class="skin-section">
+  <div class="section-heading">
+    <p class="eyebrow">Templates</p>
+    <h2>Templating</h2>
+    <p class="example-copy">Custom item and chip templates.</p>
+    <a class="stackblitz-row-link" href="https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22?startScript=start&initialpath=%2Ftemplating" target="_blank" rel="noopener">Open this route in StackBlitz</a>
+  </div>
+
+  <article class="example-row">
+    <div class="demo-cell">
+        <div class="dropdown-stack">
+          <angular-multiselect
+            [data]="templateItems"
+            [(ngModel)]="templatingSelected"
+            [settings]="templatingSettings"
+            (onSelect)="record('select', $event)"
+            (onDeSelect)="record('deselect', $event)"
+            (onSelectAll)="record('selectAll', $event)"
+            (onDeSelectAll)="record('deselectAll', $event)"
+          >
+            <c-badge>
+              <ng-template let-item="item">
+                <span class="swatch-chip"><span class="swatch" [style.background]="item.color"></span>{{ item.itemName }}</span>
+              </ng-template>
+            </c-badge>
+            <c-item>
+              <ng-template let-item="item">
+                <span class="option-row">
+                  <span class="swatch" [style.background]="item.color"></span>
+                  <span><strong>{{ item.itemName }}</strong><small>{{ item.detail }}</small></span>
+                </span>
+              </ng-template>
+            </c-item>
+          </angular-multiselect>
+          <p class="settings-preview">skin: {{ templatingSettings.skin }}</p>
+        </div>
+    </div>
+
+    <div class="code-cell">
+      <app-example-source [slug]="example.slug"></app-example-source>
+    </div>
+  </article>
+</section>
+
+<section class="activity">
+  <h2>Event log</h2>
+  <p *ngFor="let event of events">{{ event }}</p>
+</section>
