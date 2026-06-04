@@ -413,6 +413,20 @@ h3 {
   margin-left: 32px;
 }
 
+:host ::ng-deep .dropdown-list .dropdown-option > label:empty {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 14px;
+  width: 24px;
+  padding-left: 0;
+  pointer-events: none;
+}
+
+:host ::ng-deep .dropdown-list .dropdown-option.grp-item > label:empty {
+  left: 42px;
+}
+
 .option-row small {
   display: block;
   margin-top: 2px;
