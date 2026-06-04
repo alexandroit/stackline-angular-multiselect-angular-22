@@ -409,6 +409,10 @@ h3 {
   gap: 8px;
 }
 
+:host ::ng-deep .dropdown-list .dropdown-option > c-templaterenderer + .option-row {
+  margin-left: 32px;
+}
+
 .option-row small {
   display: block;
   margin-top: 2px;
