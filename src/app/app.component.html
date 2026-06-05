@@ -32,6 +32,19 @@
       </a>
     </div>
 
+    <div class="route-skin-switcher" *ngIf="currentPath === 'classic'">
+      <div class="skin-buttons" aria-label="Basic usage skin switcher">
+        <button
+          type="button"
+          *ngFor="let skin of skins"
+          [class.active]="basicSkin === skin"
+          (click)="setBasicSkin(skin)">
+          {{ labelForSkin(skin) }}
+        </button>
+      </div>
+      <p class="settings-preview">settings.skin: {{ basicSkin }}</p>
+    </div>
+
     <ng-container [ngSwitch]="currentPath">
       <ng-container *ngSwitchCase="'skin-switcher'">
         <div class="skin-buttons" aria-label="Skin switcher">
@@ -360,7 +373,7 @@
       </ng-container>
 
       <ng-container *ngSwitchDefault>
-        <div class="case-list">
+        <div class="case-list" [class.custom-skin-sample]="currentPath === 'classic' && basicSkin === 'custom'">
           <ng-container *ngFor="let example of visibleExamples; trackBy: trackExample">
             <ng-container *ngTemplateOutlet="exampleRow; context: { example: example }"></ng-container>
           </ng-container>

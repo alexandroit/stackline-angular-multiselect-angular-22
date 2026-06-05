@@ -222,6 +222,7 @@ export class AppComponent implements OnInit {
   readonly stackBlitzBase = 'https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22';
 
   currentPath: RouteName = 'classic';
+  basicSkin: SkinName = 'classic';
   skinSwitchSkin: SkinName = 'classic';
   skinSwitchExample!: LiveExample<CountryOption>;
   disabledMap: Record<string, boolean> = {};
@@ -355,6 +356,20 @@ export class AppComponent implements OnInit {
     });
     this.refreshCodeFor(this.skinSwitchExample);
     this.record('skin switch', skin);
+  }
+
+  setBasicSkin(skin: SkinName) {
+    this.basicSkin = skin;
+
+    this.classicExamples.forEach((example) => {
+      example.settings = this.makeSettings(skin, example.settings.text, {
+        ...example.settings,
+        skin
+      });
+      this.refreshCodeFor(example);
+    });
+
+    this.record('basic usage skin', skin);
   }
 
   labelForSkin(skin: SkinName) {
