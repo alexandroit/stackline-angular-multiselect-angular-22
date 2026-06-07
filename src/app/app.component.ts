@@ -141,7 +141,7 @@ const COUNTRY_SEEDS = [
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  readonly packageVersion = '22.0.1';
+  readonly packageVersion = '22.0.3';
   readonly angularRuntime = '22.0.0';
   readonly skins: SkinName[] = ['classic', 'material', 'dark', 'custom', 'brand'];
   readonly routes: LiveRoute[] = [
@@ -152,7 +152,7 @@ export class AppComponent implements OnInit {
     },
     {
       path: 'coverage',
-      title: '22.0.1 coverage',
+      title: '22.0.3 coverage',
       description: 'Keyboard contract, ARIA state, async object preservation, and renderless helper coverage.'
     },
     {

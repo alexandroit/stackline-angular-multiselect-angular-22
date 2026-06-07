@@ -2,7 +2,7 @@
 
 Lightweight StackBlitz playground for the Angular 22 line of `@stackline/angular-multiselect-dropdown`.
 
-This playground installs `@stackline/angular-multiselect-dropdown@22.0.1` against Angular `22.0.0`.
+This playground installs `@stackline/angular-multiselect-dropdown@22.0.3` against Angular `22.0.0`.
 
 This project includes the full live test matrix in one Angular app. Each example is isolated in its own folder, Angular module, route, and data object:
 
