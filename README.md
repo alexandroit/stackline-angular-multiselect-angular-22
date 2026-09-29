@@ -1,107 +1,56 @@
 # @stackline/angular-multiselect-dropdown Angular 22 Playground
 
-Lightweight StackBlitz playground for the Angular 22 line of `@stackline/angular-multiselect-dropdown`.
+This live playground installs `@stackline/angular-multiselect-dropdown@22.1.2` against Angular `22.1.3`.
 
-This playground installs `@stackline/angular-multiselect-dropdown@22.1.1` against Angular `22.1.3`.
+The running app is bootstrapped by `src/main.ts` and `src/app/app.module.ts`. All live examples, data and handlers are in `src/app/app.component.ts`, with the shared template and styles in `app.component.html` and `app.component.scss`. The historical `src/app/examples` components are not part of the active app.
 
-This project includes the full live test matrix in one Angular app. Each example is isolated in its own folder, Angular module, route, and data object:
+Every code panel loads the complete, unmodified source files copied directly by Angular's asset configuration. HTML, TypeScript, package.json, SCSS, the app module and the entry point therefore match the files used for the build. Changing a control changes the live example; it does not fabricate a different source listing.
 
-```text
-src/app/examples/basic/basic.module.ts
-src/app/examples/basic/basic.component.ts
-src/app/examples/basic/basic.component.html
-src/app/examples/basic/basic.component.scss
-src/app/examples/basic/basic.data.ts
-```
-
-The same pattern is used for every route.
-
-Shared layout follows the same maintainable Angular shape:
-
-```text
-src/app/app.component.ts
-src/app/app.component.html
-src/app/app.component.scss
-src/app/shared/example-source.component.ts
-src/app/shared/example-source.component.html
-src/app/shared/example-source.component.scss
-```
-
-- settings-only skin switching
-- classic, material, dark, custom, and brand skins
-- accessibility-focused keyboard and ARIA contract checks
-- `aria-selected` plus `aria-checked` multiselect state checks
-- template slot examples for custom badges, labels, items, headers, and empty states
-- renderless/headless state helper examples for custom Angular HTML
-- dialog and overflow clipping support with `tagToBody`
-- search, single selection, grouping, templating, limits, lazy loading, virtual scrolling, events, and disabled states
+Features include settings-only skin switching; classic, material, dark, custom and brand skins; keyboard and ARIA controls; custom badge and option templates; headless state helpers; body overlays; search, grouping, selection limits, forms, lazy loading and events.
 
 ## Routes
 
-Every route has its own module, component, template, stylesheet, and data file.
+The app uses hash routes so the same URLs work on static hosting and in StackBlitz.
 
 | Example | Route |
 | --- | --- |
-| Basic usage | `/basic` |
-| Keyboard contract | `/keyboard-contract` |
-| ARIA state | `/aria-state` |
-| Template slots | `/template-slots` |
-| Headless + ARIA | `/headless-aria` |
-| Single selection | `/single-selection` |
-| Search filter | `/search-filter` |
-| Custom search from API | `/custom-search-api` |
-| Search filter by property | `/search-filter-by-property` |
-| Search and add new item | `/search-add-new-item` |
-| Group by | `/group-by` |
-| Templating | `/templating` |
-| Template-driven forms | `/template-driven-forms` |
-| Reactive forms | `/reactive-forms` |
-| Virtual scrolling | `/virtual-scrolling` |
-| Lazy loading from API | `/lazy-loading-api` |
-| Data from remote API | `/remote-data` |
-| Using in list for loop | `/list-loop` |
-| Using inside dialog | `/dialog` |
-| Multiple dropdowns | `/multiple-dropdowns` |
-| Load dynamic data | `/dynamic-data` |
-| Methods | `/methods` |
-| Events | `/events` |
-| Disabled state | `/disabled` |
-| Limit selection | `/limit-selection` |
-| Limit badges | `/limit-badges` |
-| Custom placeholder | `/custom-placeholder` |
-| Styling | `/styling` |
+| Basic usage | `/#/classic` |
+| Keyboard and async coverage | `/#/coverage` |
+| Skin switcher | `/#/skin-switcher` |
+| Dialog overlay | `/#/dialog-overlay` |
+| Material skin | `/#/material` |
+| Forms, methods, lazy loading and events | `/#/extra` |
+| Headless + ARIA | `/#/headless-aria` |
 
 ## Run
 
 ```bash
-npm install
+npm ci
 npm start
 ```
 
-`npm start` is StackBlitz-safe. It starts the Angular CLI dev server when the runtime supports Angular 22, and serves the committed preview build when the WebContainer Node version is older than Angular 22 requires.
-
-Use this command when you specifically want the real Angular CLI dev server:
-
-```bash
-npm run dev
-```
+`npm start` runs the Angular CLI when Node supports Angular 22. Older WebContainer runtimes serve the committed `stackblitz-static` preview. To run the Angular CLI explicitly, use `npm run dev`.
 
 Angular 22 CLI requires Node `22.22.3+`, `24.15.0+`, or `26.0.0+`.
 
+## Build and verify
+
+```bash
+npm run test:server
+npm run build:preview
+npm run test:source
+npm run test:source -- stackblitz-static
+npm audit --audit-level=low
+```
+
+The source check compares all six published source assets byte-for-byte with the checkout and verifies the installed library version. Commit the refreshed `stackblitz-static` files whenever source or dependencies change. `dist/stackline-angular-multiselect-angular-22/browser` is the production output for deployment under `/docs/angular/multiselect/angular-22/live/`.
+
 ## StackBlitz
 
-```text
-https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22?startScript=start
-```
+[Open the live app in StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22?file=src%2Fapp%2Fapp.component.ts&startScript=start&initialpath=%2F%23%2Fclassic).
 
-Open a specific route by adding `initialpath`:
-
-```text
-https://stackblitz.com/github/alexandroit/stackline-angular-multiselect-angular-22?startScript=start&initialpath=%2Fsearch-filter
-```
+The link opens the actual app source and uses the existing `start` script and hash route. For another example, change `initialpath` to one of the URI-encoded routes above. The app's own StackBlitz link follows the current route.
 
 ## License
 
-The playground source is available under the [MIT License](LICENSE), including
-the retained attribution for the original Cuppa Labs project. Dependencies
-retain their respective licenses.
+The playground source is available under the [MIT License](LICENSE), including the retained attribution for the original Cuppa Labs project. Dependencies retain their respective licenses.

@@ -20,6 +20,8 @@ const mimeTypes = new Map([
   ['.map', 'application/json; charset=utf-8'],
   ['.png', 'image/png'],
   ['.svg', 'image/svg+xml; charset=utf-8'],
+  ['.scss', 'text/plain; charset=utf-8'],
+  ['.ts', 'text/plain; charset=utf-8'],
   ['.txt', 'text/plain; charset=utf-8'],
   ['.webmanifest', 'application/manifest+json; charset=utf-8']
 ]);
@@ -66,6 +68,7 @@ async function resolveFile(requestPath) {
     return filePath;
   }
 
+  if (normalizedPath.startsWith('/source/')) return null;
   return path.join(staticDir, 'index.html');
 }
 
@@ -96,7 +99,7 @@ export function sendInternalServerError(response, error) {
 
 export function serveStatic(options = {}) {
   const host = options.host || process.env.HOST || '0.0.0.0';
-  const port = Number(options.port || process.env.PORT || 4200);
+  const port = Number(options.port ?? process.env.PORT ?? 4200);
 
   const server = createServer(async (request, response) => {
     if (!['GET', 'HEAD'].includes(request.method || 'GET')) {
@@ -109,6 +112,11 @@ export function serveStatic(options = {}) {
       const requestPath = decodePathname(request.url);
       const filePath = await resolveFile(requestPath);
 
+      if (!filePath) {
+        response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        response.end('Source file not found');
+        return;
+      }
       await sendFile(request, response, filePath);
     } catch (error) {
       sendInternalServerError(response, error);

@@ -51,6 +51,26 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "app.component.*",
+                "input": "src/app",
+                "output": "source/src/app"
+              },
+              {
+                "glob": "app.module.ts",
+                "input": "src/app",
+                "output": "source/src/app"
+              },
+              {
+                "glob": "main.ts",
+                "input": "src",
+                "output": "source/src"
+              },
+              {
+                "glob": "package.json",
+                "input": ".",
+                "output": "source"
               }
             ],
             "styles": [

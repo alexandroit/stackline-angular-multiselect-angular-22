@@ -25,4 +25,6 @@ jobs:
       - run: npm ci
       - run: npm run test:server
       - run: npm run build
+      - run: npm run test:source
+      - run: npm run test:source -- stackblitz-static
       - run: npm audit --audit-level=low
